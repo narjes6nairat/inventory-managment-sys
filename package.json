@@ -1,14 +1,14 @@
 {
   "name": "db2",
   "version": "1.0.0",
-  "description": "",
+  "description": "Inventory management system helps users manage their inventory without having to do it manually, reduce losses, increase efficiency, save time, find and costs",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "narjesnairat",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -19,5 +19,13 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/narjes6nairat/inventory-managment-sys.git"
+  },
+  "bugs": {
+    "url": "https://github.com/narjes6nairat/inventory-managment-sys/issues"
+  },
+  "homepage": "https://github.com/narjes6nairat/inventory-managment-sys#readme"
 }
