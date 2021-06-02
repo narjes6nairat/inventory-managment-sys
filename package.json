@@ -22,10 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/narjes6nairat/inventory-managment-sys.git"
-  },
-  "bugs": {
-    "url": "https://github.com/narjes6nairat/inventory-managment-sys/issues"
-  },
-  "homepage": "https://github.com/narjes6nairat/inventory-managment-sys#readme"
+    "url": "https://DutyBeavers@dev.azure.com/DutyBeavers/inventory%20mangement%20system/_git/api%20ims"
+  }
+
 }
