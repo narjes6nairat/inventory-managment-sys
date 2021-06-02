@@ -1,15 +1,12 @@
 //require for mysql2
 var mysql = require('mysql2/promise');
-//export our db module
-module.exports={};
-connection()
-async function connection(){
-    var dbconnection = await mysql.createConnection({
-    host : 'localhost',
-    user : 'root',
-    password : '2021',
-    database : 'mydb'
-     });
-     
- module.exports.connection=dbconnection;
- }
+const pool = mysql.createPool({
+  host:         'localhost',
+  user:              'root',
+  database:          'inventory_db',
+  password:          '2021',
+  waitForConnections:  true,
+  connectionLimit: 10
+});
+
+module.exports = pool;
