@@ -224,3 +224,19 @@ app.delete('/api/inv_order/deleteorder', async (req, res) => {
 
 
 });
+
+
+//rest api to update record into mysql database http://localhost:8000/api/inv_order/update
+app.put('/api/inv_order/update', async function (req, res) {
+
+
+  await mysql.query('UPDATE `inv_order` SET `dete_of_order`=?,`order_details`=?,`customer_ID`=? where `order_ID`=?',
+  [req.body.dete_of_order,req.body.order_details, req.body.customer_ID,req.body.order_ID],
+  function (error, results, fields) 
+  {
+    if (error) throw error;
+    res.end(JSON.stringify(results));
+  });
+
+
+});
