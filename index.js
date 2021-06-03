@@ -166,4 +166,18 @@ app.delete('/api/inv_order/deleteorder', async (req, res) => {
 });
 
 
+//////////////////////////////////////order////////////////////////////////
 
+//rest api to get all order  http://localhost:8000/api/inv_order/getall
+app.get('/api/inv_order/getall', async function (req, res) {
+              
+
+  mysql
+    .execute('SELECT * FROM inv_order')
+    .then((response) => {
+      res.json(response[0]);
+    })
+    .catch(console.log);
+
+
+});
