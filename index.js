@@ -240,3 +240,63 @@ app.put('/api/inv_order/update', async function (req, res) {
 
 
 });
+
+
+////////////////////////////////////wearhouses/////////////////////////
+  
+//rest api to get all results about warehoise http://localhost:8000/api/warehouse/getall
+app.get('/api/warehouse/getall', async function (req, res) {
+  let sql = " SELECT * FROM wearhouses";
+  let results = await mysql.execute(sql)
+  res.status(200).json(results[0])
+});
+
+//rest api to create a new record into mysql database http://localhost:8000/wearhouses/add
+app.post('/wearhouses/add',async  function (req, res) {
+
+
+  var postData = req.body;
+  mysql.execute(`INSERT INTO wearhouses (wearhouse_ID, phone, location) VALUES (?, ?, ?)`,
+ [postData.wearhouse_ID, postData.phone,postData.location]).then((response) => {
+       res.json(response)
+ }).catch(console.log)
+
+
+});
+
+//rest api to delete record from mysql database http://localhost:8000/deleteWarehouse
+app.delete('/deleteWarehouse', async function (req, res) {
+  let sql = "delete from wearhouses where wearhouse_ID =?";
+  await mysql.query(sql,[req.body.wearhouse_ID]) 
+   res.end('Record has been deleted!');
+});
+
+
+//rest api to get all results about employee http://localhost:8000/employee
+app.get('/employee', async function (req, res) {
+  let sql = "SELECT * FROM employee";
+  let results = await mysql.execute(sql)
+  res.status(200).json(results[0])
+});
+
+
+//rest api to create a new record into mysql database http://localhost:8000/addEmployee
+  app.post('/addEmployee',async  (req, res)=> {
+    var postData = req.body;
+    //mysql.connection.query('INSERT INTO employee SET ?', postData, function (error, results, fields) {
+     
+     // res.status(200).json(results);
+    //});
+    mysql.execute(`INSERT INTO employee (employee_ID, employee_name, address,phone,Email,other_details,wearhouse_ID) VALUES (?, ?, ?,?,?,?,?)`,
+   [postData.employee_ID, postData.employee_name,postData.address,postData.phone,postData.Email,postData.other_details,postData.wearhouse_ID]).then((response) => {
+         res.json(response)
+   }).catch(console.log)
+  });
+ 
+
+//rest api to delete record from mysql database http://localhost:8000/deleteEmployee
+  app.delete('/deleteEmployee', async function (req, res) {
+  let sql = "DELETE FROM `employee` WHERE `employee_ID`=?";
+  await mysql.query(sql,[req.body.employee_ID]) 
+   res.end('Record has been deleted!');
+  });
