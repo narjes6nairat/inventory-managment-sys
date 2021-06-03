@@ -198,3 +198,17 @@ app.get('/api/inv_order/:order_ID', function (req, res) {
       res.status(404).json({ status: false, message: 'database error!' });
     });
 });
+
+
+//rest api to create a new record into mysql database http://localhost:8000/api/inv_order/add
+app.post('/api/inv_order/add',async  function (req, res) {
+
+
+  var postData = req.body;
+  mysql.execute(`INSERT INTO inv_order (order_ID, dete_of_order, order_details,customer_ID) VALUES (?, ?, ?, ?)`,
+ [postData.order_ID, postData.dete_of_order,postData.order_details, postData.customer_ID]).then((response) => {
+       res.json(response)
+ }).catch(console.log)
+
+
+});
