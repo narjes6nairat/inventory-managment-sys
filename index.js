@@ -212,3 +212,15 @@ app.post('/api/inv_order/add',async  function (req, res) {
 
 
 });
+
+
+//delete order by your id http://localhost:8000/api/inv_order/deleteorder
+app.delete('/api/inv_order/deleteorder', async (req, res) => {
+
+
+  let y = "delete from inv_order where order_ID =?"
+  let x = await mysql.execute(y, [req.body.order_ID])
+  res.status(200).json("order Successfully Deleted.");
+
+
+});
