@@ -181,3 +181,20 @@ app.get('/api/inv_order/getall', async function (req, res) {
 
 
 });
+
+
+//rest api to get a single order data http://localhost:8000/api/inv_order/:order_ID
+app.get('/api/inv_order/:order_ID', function (req, res) {
+  mysql
+    .execute(`SELECT * FROM inv_order WHERE order_ID = ?`, [req.params.order_ID])
+    .then((data) => {
+      if (!data[0].length) {
+        res.status(404).json({ status: false, message: 'order not found!' });
+        return;
+      }
+      res.json({ status: true, product: data[0] });
+    })
+    .catch((err) => {
+      res.status(404).json({ status: false, message: 'database error!' });
+    });
+});
